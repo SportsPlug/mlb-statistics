@@ -1,0 +1,17 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+
+{% if results %}
+  {% for player in results %}
+    <a href="{% url 'player' player.player_id%}">{{ player.name_first }} {{player.name_last }}</a>
+  {% endfor %}
+  {% else %}
+    <form action="{% url 'results' p_name %}" method="GET">
+      <label for="p_name">Enter player name: </label>
+      <input id="p_name" type="text" name="p_name" placeholder="Albert Pujols">
+      <input type="submit" value="OK">
+    </form>
+  {% endif %}
+
+{% endblock %}

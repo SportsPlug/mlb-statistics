@@ -1,0 +1,124 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+  {% if results %}
+      <h2>{{ results.name_first }} {{ results.name_last }}</h2>
+        <p><b>Born:</b> {{ results.birth_city }} {{ results.birth_state }}, {{ results.birth_country }}<br>
+         <b>Height/Weight:</b> {{results.height }}in / {{ results.weight }}lbs<br>
+            <b>Bats:</b> {{ results.bats }} <br>
+            <b>Throws:</b> {{ results.throws }} <br>
+            <b>Major League Debut:</b> {{ results.debut }}<br></p>
+
+  {% endif %}
+
+  {% if batting %}
+    <h4>Batting Statistics</h4>
+    <table style="width:110%">
+        <tr>
+            <th>Year</th>
+            <th>Stint</th>
+            <th>Team</th>
+            <th>League</th>
+            <th>Games</th>
+            <th>AB</th>
+            <th>R</th>
+            <th>H</th>
+            <th>2B</th>
+            <th>3B</th>
+            <th>HR's</th>
+            <th>RBI's</th>
+            <th>SB</th>
+            <th>CS</th>
+            <th>BB</th>
+            <th>SO</th>
+            <th>IBB</th>
+            <th>HBP</th>
+            <th>SH</th>
+            <th>SF</th>
+            <th>GIDP</th>
+        </tr>
+        {% for row in batting %}
+        <tr>
+            <td>{{ row.year_id }}</td>
+            <td>{{ row.stint }}</td>
+            <td>{{ row.team_id }}</td>
+            <td>{{ row.league_id }}</td>
+            <td>{{ row.g }}</td>
+            <td>{{ row.at_bats }}</td>
+            <td>{{ row.runs }}</td>
+            <td>{{ row.hits }}</td>
+            <td>{{ row.number_2b }}</td>
+            <td>{{ row.number_3b }}</td>
+            <td>{{ row.hr }}</td>
+            <td>{{ row.rbi }}</td>
+            <td>{{ row.sb }}</td>
+            <td>{{ row.cs }}</td>
+            <td>{{ row.bb }}</td>
+            <td>{{ row.so }}</td>
+            <td>{{ row.ibb }}</td>
+            <td>{{ row.hbp }}</td>
+            <td>{{ row.sh }}</td>
+            <td>{{ row.sf }}</td>
+            <td>{{ row.gidp }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+
+  {% if pitching %}
+    <h4> Pitching Statistics</h4>
+    <table style="width:110%">
+        <tr>
+            <th>Year</th>
+            <th>Stint</th>
+            <th>Team</th>
+            <th>League</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>G</th>
+            <th>GS</th>
+            <th>SH</th>
+            <th>SV</th>
+            <th>OP</th>
+            <th>H</th>
+            <th>ER</th>
+            <th>BB</th>
+            <th>CS</th>
+            <th>BB</th>
+            <th>SO</th>
+            <th>BA-Opp</th>
+            <th>ERA</th>
+            <th>IBB</th>
+            <th>HBP</th>
+            <th>BK</th>
+            <th>R</th>
+        </tr>
+        {% for row in pitching %}
+        <tr>
+            <td>{{ row.year_id }}</td>
+            <td>{{ row.stint }}</td>
+            <td>{{ row.team_id }}</td>
+            <td>{{ row.league_id }}</td>
+            <td>{{ row.w }}</td>
+            <td>{{ row.l }}</td>
+            <td>{{ row.g }}</td>
+            <td>{{ row.gs }}</td>
+            <td>{{ row.shutouts }}</td>
+            <td>{{ row.saves }}</td>
+            <td>{{ row.outs_pitched }}</td>
+            <td>{{ row.h }}</td>
+            <td>{{ row.er }}</td>
+            <td>{{ row.hr }}</td>
+            <td>{{ row.bb }}</td>
+            <td>{{ row.strikeouts }}</td>
+            <td>{{ row.baopp }}</td>
+            <td>{{ row.era }}</td>
+            <td>{{ row.ibb }}</td>
+            <td>{{ row.hbp }}</td>
+            <td>{{ row.bk }}</td>
+            <td>{{ row.r }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+{% endblock %}

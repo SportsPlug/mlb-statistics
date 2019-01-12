@@ -1,0 +1,49 @@
+{% extends 'base_template.html' %}
+
+{% block content %}
+  {% if results %}
+    <h2>{{ results.name }}, {{ results.year_id }} ({{ results.franchise_id }})</h2>
+    <p><b>League:</b> {{ results.league_id }}<br>
+       <b>Power Ranking</b> {{ results.rank }}<br>
+       <b>Park:</b> {{ results.park }}<br></p>
+    <h4>{{ results.name }}'s Statistics ({{ results.year_id }})</h4>
+    <table style="width:100%">
+        <tr>
+            <th>G</th>
+            <th>@Home</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>R</th>
+            <th>AB</th>
+            <th>H</th>
+            <th>2B</th>
+            <th>3B</th>
+            <th>HR</th>
+            <th>BB</th>
+            <th>SO</th>
+            <th>SB</th>
+            <th>CS</th>
+            <th>RA</th>
+            <th>ERA</th>
+        </tr>
+        <tr>
+            <td>{{ results.g }}</td>
+            <td>{{ results.home_games}}</td>
+            <td>{{ results.w }}</td>
+            <td>{{ results.l }}</td>
+            <td>{{ results.r }}</td>
+            <td>{{ results.at_bats }}</td>
+            <td>{{ results.h }}</td>
+            <td>{{ results.number_2b }}</td>
+            <td>{{ results.number_3b }}</td>
+            <td>{{ results.hr }}</td>
+            <td>{{ results.bb }}</td>
+            <td>{{ results.so }}</td>
+            <td>{{ results.sb }}</td>
+            <td>{{ results.cs }}</td>
+            <td>{{ results.ra }}</td>
+            <td>{{ results.era }}</td>
+        </tr>
+    </table>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h2>MLB Stats Search Page</h2>
+    <form action="" method="GET">
+      <label for="p_name">Enter player name: </label>
+      <input id="p_name" type="text" name="p_name" placeholder="Albert Pujols">
+      <input type="submit" value="OK">
+    </form>
+
+  <form action="" method="GET">
+    <label for="t_name">Enter team name: </label>
+    <input id="t_name" type="text" name="t_name" placeholder="Boston Red Sox">
+    <input type="submit" value="OK">
+  </form>
+
+   {% if errorMessage %}
+     <p>{{ errorMessage }}</p>
+   {% endif %}
+
+   {% if t_errorMessage %}
+      <p>{{ t_errorMessage }}</p>
+   {% endif %}
+
+   {% if t_results %}
+     {% for team in t_results %}
+       <p><a href="{% url 'team' team.team_id team.year_id %}">{{ team.name }}, {{ team.year_id }}</a></p>
+     {% endfor %}
+   {% endif %}
+
+   {% if results %}
+     {% for player in results %}
+       <p><a href="{% url 'player' player.player_id %}">{{ player.name_first }} {{ player.name_last }}</a></p>
+     {% endfor %}
+   {% endif %}
+{% endblock %}
