@@ -12,38 +12,40 @@ from django.db.models import Q, Max
 # Create your views here.
 
 def index(request):
-    """View function for home page of site."""
+    return render(request, "index.html")
+# def index(request):
+#     """View function for home page of site."""
 
-    fields = ['at_bats', 'runs', 'hits', 'number_2b', 'number_3b', 'hr', 'rbi', 'sb', 'cs', 'bb', 'so', 'ibb', 'hbp', 'sh', 'sf', 'gidp']
+#     # fields = ['at_bats', 'runs', 'hits', 'number_2b', 'number_3b', 'hr', 'rbi', 'sb', 'cs', 'bb', 'so', 'ibb', 'hbp', 'sh', 'sf', 'gidp']
 
 
-    batting_stat = request.GET.get('stat_leaders_batting')
-    batting_stat_year = request.GET.get('stats_batting_year')
-    if batting_stat or batting_stat_year:
-        b1 = Batting.objects.all()
-        b_max_v = b1.filter(Q(year_id=batting_stat_year)).aggregate(Max(batting_stat))
-        b_max = list(b_max_v.values())
-        print(b_max_v)
+#     # batting_stat = request.GET.get('stat_leaders_batting')
+#     # batting_stat_year = request.GET.get('stats_batting_year')
+#     # if batting_stat or batting_stat_year:
+#     #     b1 = Batting.objects.all()
+#     #     b_max_v = b1.filter(Q(year_id=batting_stat_year)).aggregate(Max(batting_stat))
+#     #     b_max = list(b_max_v.values())
+#     #     print(b_max_v)
 
-        # Qr = None
-        # for field in fields:
-        #     q = Q(**{"%s__contains" % field: })
-        #     if Qr:
-        #         Qr = Qr | q  # or & for filtering
-        #     else:
-        #         Qr = q
-        # results = Batting.objects.get()
-        # print(int(b_max[0]))
-        # print(int(batting_stat_year))
-        # results = Batting.objects.raw("SELECT player_id as id, year_id, stint, '%s' FROM Batting where '%s'='%s' AND year_id='%s' " %(batting_stat, batting_stat, int(b_max[0]), int(batting_stat_year)))
-        results = ''
-        context = {
-            "results":results,
-        }
-        return render(request, "index.html", context)
-    else:
-        context = {}
-        return render(request, 'index.html', context=context)
+#         # Qr = None
+#         # for field in fields:
+#         #     q = Q(**{"%s__contains" % field: })
+#         #     if Qr:
+#         #         Qr = Qr | q  # or & for filtering
+#         #     else:
+#         #         Qr = q
+#         # results = Batting.objects.get()
+#         # print(int(b_max[0]))
+#         # print(int(batting_stat_year))
+#         # results = Batting.objects.raw("SELECT player_id as id, year_id, stint, '%s' FROM Batting where '%s'='%s' AND year_id='%s' " %(batting_stat, batting_stat, int(b_max[0]), int(batting_stat_year)))
+#         results = ''
+#         context = {
+#             "results":results,
+#         }
+#         return render(request, "index.html", context)
+#     else:
+#         context = {}
+#         return render(request, 'index.html', context=context)
 
 def allplayers(request):
     """View function for allPlayers page of site."""

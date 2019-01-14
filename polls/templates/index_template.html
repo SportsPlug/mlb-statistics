@@ -10,26 +10,19 @@
   <!--<link rel="stylesheet" href="{% static 'css/styles.css' %}">-->
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-2">
-      {% block sidebar %}
-        <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'allplayers' %}">All players</a></li>
-          <li><a href="{% url 'allteams' %}">All teams</a></li>
-          <li><a href="{% url 'search' %}">Search Players and Teams</a></li>
-        </ul>
-     {% endblock %}
-      </div>
-      <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
-    </div>
-  </div>
+  <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
 </body>
 <style>
+		  .hp-tt {
+				text-align: center;
+			}
+			.hp-ti {
+				text-align: center;
+			}
       .hp-f-c {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
+				align-items: center;
       }
       .hp-f-c > div {
         background-color: #f1f1f1;
@@ -39,5 +32,8 @@
         line-height: 75px;
         font-size: 30px;
       }
+			footer {
+				text-align: center;
+			}
 </style>
 </html>
